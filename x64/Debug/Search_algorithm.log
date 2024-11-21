@@ -1,0 +1,16 @@
+﻿  main.cpp
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(21,63): warning C4267: “参数”: 从“size_t”转换到“_Ty”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(21,63): warning C4267:         with
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(21,63): warning C4267:         [
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(21,63): warning C4267:             _Ty=int
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(21,63): warning C4267:         ]
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(36,72): warning C4267: “参数”: 从“size_t”转换到“_Ty”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(36,72): warning C4267:         with
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(36,72): warning C4267:         [
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(36,72): warning C4267:             _Ty=int
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(36,72): warning C4267:         ]
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(41,80): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(46,78): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(51,92): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(54,97): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+  Search_algorithm.vcxproj -> D:\Visual Studio 2022\source\repos\Search_algorithm\x64\Debug\Search_algorithm.exe
