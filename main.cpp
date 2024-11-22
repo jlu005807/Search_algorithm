@@ -27,6 +27,11 @@ void Test_SeqList()
     std::cout << "Sequential Search: Key " << searchKey
         << " found at index " << indexSeq << std::endl;
 
+    // 测试顺序查找
+    int indexSeq1 = Search_Seq_modify(randomVector, searchKey);
+    std::cout << "Sequential Search: Key " << searchKey
+        << " found at index " << indexSeq1 << std::endl;
+
     // 生成随机有序数组
     std::vector<int> orderedVector = generator.generateRandomOrderedVector();
     std::cout << "\nOrdered Vector:" << std::endl;

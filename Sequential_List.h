@@ -45,6 +45,39 @@ int Search_Seq(T* ST,int n, T key)
 	return -1;
 }
 
+//通过为表引入一个“虚拟＂记录key，并且每次前进步长为二
+//通过减少比较次数，能提高算法S的查找效率
+template<class T = int>
+int Search_Seq_modify(std::vector<T> ST, T key)
+{
+	//放入虚拟记录
+	ST.push_back(key);
+
+	int i = 0;
+	while (1)
+	{
+		if (ST[i] == key)return i;
+		if (ST[i + 1] != key)
+		{
+			i = i + 2;
+		}
+		else
+		{
+			i++;
+		}
+	}
+
+	if(i==ST.size())
+	{
+		//查找失败返回-1
+		return -1;
+	}
+	else
+	{
+		return i;
+	}
+}
+
 
 
 //二分查找（英语：binary search），也称折半搜索（英语：half-interval search）,O(logn)
@@ -83,6 +116,7 @@ int Binary_Search(T* a, int left,int right, T key)
 	//未找到
 	return -1;
 }
+
 
 //定义 target 是在一个在左闭右开的区间里，也就是[left, right) ，那么二分法的边界处理方式则截然不同。
 //while (left < right)，这里使用 < , 因为left == right在区间[left, right)是没有意义的
@@ -164,7 +198,7 @@ int Binary_Search_Recursive_Open(T* a, int left, int right, T key)
 
 //拓展，理解
 template<class T=int>
-class bsearch
+class BinarySearcher
 {
 private:
 	const T* arrayStart; // 数组起始位置
@@ -232,4 +266,4 @@ public:
 //过程
 //先将key依次和索引表中各最大关键字进行比较，确定待查记录所在的块（子表）
 //从该块的指针项（指示该子表的第一个记录在表中位置）顺序查找
-//不考虑实现
+//不考虑实现  
