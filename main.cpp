@@ -62,8 +62,48 @@ void Test_SeqList()
     return;
 }
 
+//测试一致对半查找
+void Test_cbiSearch()
+{
+    random_array generator;
+
+    // 生成随机无序数组
+    std::vector<int> randomVector = generator.generateRandomOrderedVector();
+    std::cout << "Random Vector:" << std::endl;
+    printArray(randomVector);
+
+    int* arr1 = randomVector.data();
+    int n1 = randomVector.size();
+
+    // 随机生成查找值
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, randomVector.size());
+    int randomIndex = dis(gen);
+    int searchKey1 = randomVector[randomIndex]; // 随机选择数组中的某个值作为查找目标
+
+    // 测试用例 1：正常查找，目标值存在
+    std::cout << "Test 1: key:" << searchKey1 << std::endl;
+    std::cout << cbiSearch(arr1, n1, searchKey1) << std::endl;
+
+    // 测试用例 2：查找失败，目标值不存在
+    std::cout << "Test 2: ";
+    std::cout << cbiSearch(arr1, n1, 1001)<< std::endl;
+
+    // 测试用例 3：边界值（第一个和最后一个元素）
+    std::cout << "Test 3a: key:" << randomVector[0] << std::endl;
+    std::cout << cbiSearch(arr1, n1, randomVector[0]) << std::endl;
+    std::cout << "Test 3b: key:" << randomVector[n1-1] << std::endl;
+    std::cout << cbiSearch(arr1, n1, randomVector[n1-1])  << std::endl;
+
+    
+}
+
 int main()
 {
     Test_SeqList();
+    system("Pause");
+
+    Test_cbiSearch();
     system("Pause");
 }

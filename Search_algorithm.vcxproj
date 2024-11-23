@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClInclude Include="random_array.h" />
     <ClInclude Include="Sequential_List.h" />
+    <ClInclude Include="Tree_Search.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

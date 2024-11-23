@@ -4,6 +4,7 @@
 
 #include<iostream>
 #include<functional>
+#include<cmath>
 #include<vector>
 
 //顺序查找
@@ -262,8 +263,76 @@ public:
 //对每个子表（或称块）建立一个索引项，其中包括两项内容：
 //关键字项（其值为该子表内的最大关键字）和指针项（指示该子表的第一个记录在表中位置）。
 //索引表按关键字有序，则表或者有序或者分块有序
+//由于块内是无序的，故插入和删除比较容易，无需进行大量移动。
 
 //过程
 //先将key依次和索引表中各最大关键字进行比较，确定待查记录所在的块（子表）
 //从该块的指针项（指示该子表的第一个记录在表中位置）顺序查找
-//不考虑实现  
+//默认无序
+//不考虑实现
+
+
+
+//一致对半查找，
+//譬如仅使用三个指针(s、门和e)中的两个。
+//其具体思路是，使用当前位置i和它的变化率x,在每次不相等的比较之后，可置i<-i土x和x<-x/2(近似地）。
+// 算法U之所以被称为是一致的，
+//其原因是在第K层上的一个结点的编号与在第K - l层上其父结点的编号之差的绝对值，
+//对于第k层上的所有结点均有一致的常数x。
+
+//构建辅助数组DELTA记录每次区间数量m的值
+std::vector<int> cal_delta(int n)
+{
+	std::vector<int> delta; // 保存步长
+	int k = int(std::log(n) / std::log(2)) + 2; // 计算层数
+	int temp = 1;
+
+	for (int i = 0; i < k; i++)
+	{
+		delta.push_back((n + temp) / (temp * 2)); // 计算步长
+		temp *= 2; // 更新 temp
+	}
+
+	/*for (const auto i : delta)
+	{
+		std::cout << i << " ";
+	}
+	std::cout << std::endl;*/
+
+	return delta; // 返回步长数组
+}
+
+template<class T = int>
+int cbiSearch(T* a, int n, int key)
+{
+	if (n < 1)return -1; // 空数组，直接返回
+
+	if (a[0] == key)return 0; // 特殊情况：第一个元素就是目标
+
+	std::vector<int> Delta = cal_delta(n); // 生成步长数组
+	int i = n / 2;
+	int j = 1;        // 当前步长索引
+
+	while (key != a[i]) // 循环直到找到 key
+	{
+		if (key < a[i]) // key 在当前元素左侧
+		{
+			if ( j >= Delta.size()|| Delta[j] == 0 ) return -1; // 步长为 0，无法再分割
+			else
+			{
+				i -= Delta[j]; // 左移
+				j++;           // 步长递减
+			}
+		}
+		if (a[i] < key) // key 在当前元素右侧
+		{
+			if (j >= Delta.size() || Delta[j] == 0)return -1; // 步长为 0，无法再分割
+			else
+			{
+				i += Delta[j]; // 右移
+				j++;           // 步长递减
+			}
+		}
+	}
+	return i; // 找到目标，返回下标
+}

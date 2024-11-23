@@ -13,7 +13,7 @@ public:
         std::mt19937 gen(rd());  // 使用 Mersenne Twister 随机数生成器
 
         // 随机决定数组的大小
-        std::uniform_int_distribution<> size_dis(20, 50);
+        std::uniform_int_distribution<> size_dis(10, 30);
         int size = size_dis(gen);
 
 
