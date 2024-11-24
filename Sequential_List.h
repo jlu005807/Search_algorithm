@@ -5,6 +5,7 @@
 #include<iostream>
 #include<functional>
 #include<cmath>
+#include<climits>
 #include<vector>
 
 //顺序查找
@@ -335,4 +336,119 @@ int cbiSearch(T* a, int n, int key)
 		}
 	}
 	return i; // 找到目标，返回下标
+}
+
+//斐波那契(黄金分割法）搜索（Fibonacci Search)（,又称为斐波那契查找
+//在二分搜索的基础上，根据斐波那契数列分割，而不是简单的二分
+//前提是待查找的查找表必须顺序存储并且有序
+
+//数列从坐标1开始计数
+//构造辅助数组，即斐波那契数列，数列生成到大于等于n
+std::vector<int> Fib_arr(int n)
+{
+	std::vector<int> Fib;
+	//初始化
+	Fib.push_back(0);
+	Fib.push_back(1);
+
+	for (int i = 2;; i++)
+	{
+		int next = Fib[i - 1] + Fib[i - 2];
+		Fib.push_back(next);
+		if (next >= n) break;
+	}
+
+	return Fib;
+}
+
+template<class T=int>
+int Fibonacci_Search(T* a,int n,T key)
+{
+	//空表
+	if (n < 1)return -1;
+
+	//初始化
+	int left = 0;
+	int right = n - 1;
+
+	//得到辅助数列
+	std::vector<int> F = Fib_arr(n);
+	int k = F.size()-1;
+
+	//如果a数组不足F[k]-1，则重复增加a的最后一个数直到长度等于F[k]-1
+	std::vector<T> temp{ a,a+n };
+
+	//一次性调整 temp 的大小来提高效率
+	temp.resize(F[k] - 1, temp[n - 1]);
+
+
+	//查找，注意这里实现查找区间左边比右边大
+	//即如果当前区间为F[k]-1=F[k-1]-1 + F[k-2]-1 + 1;最后一个1的位置给mid
+	//左区间为F[k-1]-1, 右区间为F[k-2]-1
+	while (left <= right)
+	{
+		// mid 由左边界和 F[k-1] 决定，确保不越界,但是正常情况下不会越界 
+		int mid = std::min(left + F[k - 1] - 1, right);
+
+		if (key < temp[mid])  // 如果 key 在左区间
+		{
+			right = mid - 1;  // 更新右边界
+			k -= 1;          // 更新斐波那契索引，左区间长度为 F[k-1]
+		}
+		else if (temp[mid] < key)  // 如果 key 在右区间
+		{
+			left = mid + 1;  // 更新左边界
+			k -= 2;          // 更新斐波那契索引，右区间长度为 F[k-2]
+		}
+		else  // 找到目标值
+		{
+			// 如果是补充值，则返回原数组最后一个元素
+			return mid < n ? mid : n - 1;  
+		}
+	}
+
+	//未找到
+	return -1;
+}
+
+
+//插值查找
+//基本原理是根据要查找的值在有序数组中的大致位置进行估计，以此来缩小搜索范围
+//通过数据的分布情况来预测目标值的位置，特别适用于有序且均匀分布的数据集
+template<class T=int>
+int InterPolation_Search(T* a, int n, T key)
+{
+	if (n < 1)return -1;
+
+	//初始化
+	int left = 0;
+	int right = n - 1;
+	//插值
+	int pos = INT_MAX;
+	//迭代
+	while (left <= right&&a[left]!=a[right])//防止除以零
+	{
+		// 使用插值公式计算估计位置,此处和二分查找不同
+		pos = left + (((key - a[left]) * (right - left)) / (a[right] - a[left]));
+
+		// 越界检查
+		if (pos < left || pos > right) return -1;
+		
+		if (key < a[pos])
+		{
+			right = pos - 1;
+		}
+		else if (a[pos] < key)
+		{
+			left = pos + 1;
+		}
+		else
+		{
+			return pos;
+		}
+
+	}
+
+	// 特殊情况：剩余单个元素时检查是否匹配
+	return (a[left] == key) ? left : -1;
 }

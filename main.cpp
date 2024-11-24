@@ -67,7 +67,7 @@ void Test_cbiSearch()
 {
     random_array generator;
 
-    // 生成随机无序数组
+    // 生成随机数组
     std::vector<int> randomVector = generator.generateRandomOrderedVector();
     std::cout << "Random Vector:" << std::endl;
     printArray(randomVector);
@@ -94,16 +94,59 @@ void Test_cbiSearch()
     std::cout << "Test 3a: key:" << randomVector[0] << std::endl;
     std::cout << cbiSearch(arr1, n1, randomVector[0]) << std::endl;
     std::cout << "Test 3b: key:" << randomVector[n1-1] << std::endl;
-    std::cout << cbiSearch(arr1, n1, randomVector[n1-1])  << std::endl;
-
-    
+    std::cout << cbiSearch(arr1, n1, randomVector[n1-1])  << std::endl;   
 }
 
+void Test_Fibonacci_Search()
+{
+    random_array generator;
+
+    // 生成随机数组
+    std::vector<int> randomVector = generator.generateRandomOrderedVector();
+    std::cout << "Random Vector:" << std::endl;
+    printArray(randomVector);
+
+    // 随机生成查找值
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, randomVector.size() + 5);
+    int randomIndex = dis(gen);
+    int searchKey = randomIndex < randomVector.size() ? randomVector[randomIndex] : randomIndex;  // 随机选择数组中的某个值作为查找目标
+
+    int indexOpen1 =Fibonacci_Search(randomVector.data(), randomVector.size() , searchKey);
+    std::cout << "Fibonacci_Search:" << "Key " << searchKey << " found at index " << indexOpen1 << std::endl;
+}
+
+void Test_InterPolationSearch()
+{
+    random_array generator;
+
+    // 生成随机数组
+    std::vector<int> randomVector = generator.generateRandomOrderedVector();
+    std::cout << "Random Vector:" << std::endl;
+    printArray(randomVector);
+
+    // 随机生成查找值
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, randomVector.size() + 5);
+    int randomIndex = dis(gen);
+    int searchKey = randomIndex < randomVector.size() ? randomVector[randomIndex] : randomIndex;  // 随机选择数组中的某个值作为查找目标
+
+    int indexOpen1 = InterPolation_Search(randomVector.data(), randomVector.size(), searchKey);
+    std::cout << "InterPolation_Search:" << "Key " << searchKey << " found at index " << indexOpen1 << std::endl;
+}
 int main()
 {
     Test_SeqList();
     system("Pause");
 
     Test_cbiSearch();
+    system("Pause");
+
+    Test_Fibonacci_Search();
+    system("Pause");
+
+    Test_InterPolationSearch();
     system("Pause");
 }

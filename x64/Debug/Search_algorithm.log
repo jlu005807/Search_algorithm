@@ -19,4 +19,17 @@ D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(81
 D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(81,61): warning C4267:         [
 D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(81,61): warning C4267:             _Ty=int
 D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(81,61): warning C4267:         ]
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(112,64): warning C4267: “参数”: 从“size_t”转换到“_Ty”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(112,64): warning C4267:         with
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(112,64): warning C4267:         [
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(112,64): warning C4267:             _Ty=int
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(112,64): warning C4267:         ]
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(116,76): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(132,64): warning C4267: “参数”: 从“size_t”转换到“_Ty”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(132,64): warning C4267:         with
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(132,64): warning C4267:         [
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(132,64): warning C4267:             _Ty=int
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(132,64): warning C4267:         ]
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(136,81): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\Sequential_List.h(376,8): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
   Search_algorithm.vcxproj -> D:\Visual Studio 2022\source\repos\Search_algorithm\x64\Debug\Search_algorithm.exe
