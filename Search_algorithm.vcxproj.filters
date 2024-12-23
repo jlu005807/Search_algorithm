@@ -26,7 +26,13 @@
     <ClInclude Include="random_array.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Tree_Search.h">
+    <ClInclude Include="BiSortTree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="B-Tree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AVLTree.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

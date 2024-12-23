@@ -5,6 +5,8 @@
 
 #include "random_array.h"  
 #include "Sequential_List.h"
+#include"BiSortTree.h"
+
 
 void Test_SeqList()
 {
@@ -136,6 +138,10 @@ void Test_InterPolationSearch()
     int indexOpen1 = InterPolation_Search(randomVector.data(), randomVector.size(), searchKey);
     std::cout << "InterPolation_Search:" << "Key " << searchKey << " found at index " << indexOpen1 << std::endl;
 }
+
+
+
+
 int main()
 {
     Test_SeqList();
@@ -149,4 +155,5 @@ int main()
 
     Test_InterPolationSearch();
     system("Pause");
+
 }

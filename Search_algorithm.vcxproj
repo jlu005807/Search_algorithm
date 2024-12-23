@@ -130,9 +130,11 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AVLTree.h" />
+    <ClInclude Include="B-Tree.h" />
     <ClInclude Include="random_array.h" />
     <ClInclude Include="Sequential_List.h" />
-    <ClInclude Include="Tree_Search.h" />
+    <ClInclude Include="BiSortTree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

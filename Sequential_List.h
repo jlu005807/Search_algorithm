@@ -285,7 +285,7 @@ public:
 std::vector<int> cal_delta(int n)
 {
 	std::vector<int> delta; // 保存步长
-	int k = int(std::log(n) / std::log(2)) + 2; // 计算层数
+	int k = int(log2(n)) + 1; // 计算层数
 	int temp = 1;
 
 	for (int i = 0; i < k; i++)
@@ -355,7 +355,7 @@ std::vector<int> Fib_arr(int n)
 	{
 		int next = Fib[i - 1] + Fib[i - 2];
 		Fib.push_back(next);
-		if (next >= n) break;
+		if (next - 1 >= n) break;
 	}
 
 	return Fib;
