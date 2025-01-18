@@ -47,7 +47,7 @@ class BiSortTree
 	}
 
 	//查找二叉搜索树中关键词最小的节点
-	Tree<T>* findMin(Tree* root)
+	Tree<T>* findMin(Tree<T>* root)
 	{
 		if (root == nullptr)return nullptr;
 
@@ -60,7 +60,7 @@ class BiSortTree
 	}
 
 	//查找二叉搜索树中关键词最大的节点
-	Tree<T>* findMax(Tree* root)
+	Tree<T>* findMax(Tree<T>* root)
 	{
 		if (root == nullptr)return nullptr;
 

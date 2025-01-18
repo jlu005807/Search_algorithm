@@ -31,5 +31,5 @@ D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(13
 D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(134,64): warning C4267:             _Ty=int
 D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(134,64): warning C4267:         ]
 D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\main.cpp(138,81): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\Sequential_List.h(376,8): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\Visual Studio 2022\source\repos\Search_algorithm\Search_algorithm\Sequential_List.h(379,8): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
   Search_algorithm.vcxproj -> D:\Visual Studio 2022\source\repos\Search_algorithm\x64\Debug\Search_algorithm.exe

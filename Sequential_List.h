@@ -49,33 +49,36 @@ int Search_Seq(T* ST,int n, T key)
 
 //通过为表引入一个“虚拟＂记录key，并且每次前进步长为二
 //通过减少比较次数，能提高算法S的查找效率
+//通过为表引入一个“虚拟＂记录key即设置监视哨，并且每次前进步长为二
+//通过减少比较次数，能提高算法S的查找效率
 template<class T = int>
-int Search_Seq_modify(std::vector<T> ST, T key)
+int Search_Seq_modify(std::vector<T>& ST, T key)
 {
-	//放入虚拟记录
+	// 放入虚拟记录
 	ST.push_back(key);
 
 	int i = 0;
-	while (1)
+	while (ST[i] != key)
 	{
-		if (ST[i] == key)return i;
 		if (ST[i + 1] != key)
 		{
-			i = i + 2;
+			i += 2;  // 步长为2
 		}
 		else
 		{
-			i++;
+			i++;  // 步长为1
 		}
 	}
 
-	if(i==ST.size())
+	// 返回结果
+	if (i == ST.size() - 1)
 	{
-		//查找失败返回-1
+		// 查找失败
 		return -1;
 	}
 	else
 	{
+		// 查找成功，返回索引
 		return i;
 	}
 }

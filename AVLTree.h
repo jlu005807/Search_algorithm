@@ -110,7 +110,7 @@ private:
                 return (Factor)this->right->height; // 只有右子树时，平衡因子为右子树高度
             }
             else if (this->right == nullptr) {
-                return (Factor)-this->left->height; // 只有左子树时，平衡因子为负的左子树高度
+                return (Factor)this->left->height; // 只有左子树时，平衡因子为负的左子树高度
             }
             else {
                 // 如果左右子树都有，平衡因子为右子树高度 - 左子树高度
@@ -128,6 +128,51 @@ private:
         static Ptr from(const Key& k, const Value& v) { return std::make_shared<Node>(Node(k, v)); }
     };
 
-    // 还可以添加 AVL 树的根节点、插入、删除、查找等操作的成员函数
+    
+    using NodePtr = typename Node::Ptr;  // 定义指向 Node 的智能指针类型
+    using ConstNodePtr = const NodePtr&; // 定义指向 Node 的常量引用类型
+    using NodeProvider = typename Node::Provider; // 提供节点的函数类型
+    using NodeConsumer = typename Node::Consumer; // 消费节点的函数类型
+
+    NodePtr root = nullptr; // 树的根节点
+    USize count = 0; // 节点的计数器
+
+    using K = const Key&; // 键的常量引用类型
+    using V = const Value&; // 值的常量引用类型
+
+public:
+    // EntryList：表示一个包含多个 Entry 的列表（用 std::vector 实现），通常用于存储键值对的集合
+    using EntryList = std::vector<Entry>;
+
+    // KeyValueConsumer：表示一个常量引用的函数类型，它接受一个键和一个值，并对它们进行处理
+    // 该函数一般用于遍历或消费键值对
+    using KeyValueConsumer = const std::function<void(K, V)>&;
+
+    // MutKeyValueConsumer：表示一个常量引用的函数类型，它接受一个键和一个可变的值引用，并对它们进行处理
+    // 该函数一般用于对值进行修改
+    using MutKeyValueConsumer = const std::function<void(K, Value&)>&;
+
+    // KeyValueFilter：表示一个常量引用的函数类型，它接受一个键和一个值，并返回一个布尔值
+    // 用于过滤键值对，返回 true 表示接受该键值对，返回 false 表示过滤掉该键值对
+    using KeyValueFilter = const std::function<bool(K, V)>&;
+
+    // NoSuchMappingException：自定义异常类，继承自 std::exception，用于表示 "没有这样的映射" 异常
+    class NoSuchMappingException : protected std::exception
+    {
+    private:
+        const char* message; // 异常消息字符串，指示错误的具体信息
+
+    public:
+        // 构造函数：接受一个消息字符串 msg，用于初始化异常消息
+        explicit NoSuchMappingException(const char* msg) : message(msg) { }
+
+        // 重载 what() 函数：返回异常消息，标准库会调用这个函数来获取异常信息
+        const char* what() const noexcept override {
+            return message;  // 返回存储的异常消息
+        }
+    };
+
+
+
 
 };
